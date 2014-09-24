@@ -34,7 +34,7 @@
                 <springtimesoft_raygun_api_key></springtimesoft_raygun_api_key>
             </springtimesoft_raygun_group>
             <springtimesoft_raygun_advanced_group>
-                <springtimesoft_raygun_async>1</springtimesoft_raygun_async>
+                <springtimesoft_raygun_async>0</springtimesoft_raygun_async>
                 <springtimesoft_raygun_tags>php</springtimesoft_raygun_tags>
             </springtimesoft_raygun_advanced_group>
         </springtimesoft_raygun>
