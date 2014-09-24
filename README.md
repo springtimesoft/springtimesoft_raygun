@@ -27,9 +27,11 @@ Detailed and friendly instructions coming soon.
 
 #### Configuration
 
-Navigate to `System > Configuration > Springtimesoft > Raygun`.
+Clear the Magento Cache by navigating to `System > Cache Management` and refreshing `Configuration` and `Layouts`.
 
-If you see a "404 Error" when accessing the admin page please log out and in again to refresh the Magento ACL.
+Next log out and then back in, this is to prevent a 404 error from occurring when accessing the configuration page.
+
+Now navigate to `System > Configuration > Springtimesoft > Raygun` and enter your Raygun API key. Adjust other options as necessary.
 
 #### Raygun.io
 
