@@ -14,7 +14,7 @@ Detailed and friendly instructions coming soon.
 
 ##### Instructions for Magento Connect:
 
-...
+Copy the extension key into the Magento Connect installer and hit the install button.
 
 ##### Instructions for Composer:
 
