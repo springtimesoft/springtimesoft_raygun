@@ -1,0 +1,25 @@
+{
+    "name": "springtimesoft/springtimesoft_raygun",
+    "type": "magento-module",
+    "license": "MIT",
+    "homepage": "https://github.com/springtimesoft/springtimesoft_raygun",
+    "description": "The official Magento provider for the Raygun error reporting and tracking service.",
+    "authors": [
+        {
+            "name": "Springtimesoft Consulting Limited",
+            "email": "support@springtimesoft.co.nz"
+        }
+    ],
+    "extra": {
+        "map": [
+            [
+                "/app/code/community/Springtimesoft/Raygun/",
+                "/app/code/community/Springtimesoft/Raygun/"
+            ],
+            [
+                "/app/etc/modules/Springtimesoft_Raygun.xml",
+                "/app/etc/modules/Springtimesoft_Raygun.xml"
+            ]
+        ]
+    }
+}

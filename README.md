@@ -18,7 +18,14 @@ Detailed and friendly instructions coming soon.
 
 ##### Instructions for Composer:
 
-...
+See https://github.com/magento-hackathon/magento-composer-installer for more information.
+
+##### Instructions for Modman:
+
+From the Modman wiki:
+
+    $ modman init
+    $ modman clone https://github.com/springtimesoft/springtimesoft_raygun.git
 
 ##### Instructions for manual install
 
