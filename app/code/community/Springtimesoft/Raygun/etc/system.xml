@@ -55,31 +55,6 @@ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAYAAAA8AXHiAAAABmJLR0QA/w
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </springtimesoft_raygun_api_key>
-                        <springtimesoft_raygun_instructions translate="label">
-                            <frontend_type>label</frontend_type>
-                            <label><![CDATA[
-<div style="width:600px;margin-top:60px">
-<p>To catch exceptions this code snippet must also be inserted into <strong><code>app/Mage.php</code></strong> around line <strong><code>693</code></strong>.</p>
-<p><em>Without these lines in place only regular errors will be caught. Please note that this is a core hack, and care should be taken when upgrading Magento in the future.</em></p>
-<pre style="padding-left:10px;background:#111;color:#fff;font-size:11px"><code>
-    die();
-} catch (Exception $e) {
-    // BEGIN
-    if (class_exists('Springtimesoft_Raygun_Helper_Data')) {
-        self::helper('springtimesoft_raygun')->exceptionHandler($e);
-    }
-    // END
-
-    if (self::isInstalled() || self::$_isDownloader) {
-
-</code></pre>
-</div>
-                            ]]></label>
-                            <sort_order>100</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </springtimesoft_raygun_instructions>
                     </fields>
                 </springtimesoft_raygun_group>
                 <springtimesoft_raygun_advanced_group translate="label" module="springtimesoft_raygun">
@@ -109,6 +84,30 @@ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAYAAAA8AXHiAAAABmJLR0QA/w
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </springtimesoft_raygun_tags>
+                        <springtimesoft_raygun_instructions translate="label">
+                            <frontend_type>label</frontend_type>
+                            <label><![CDATA[
+<div style="width:600px;margin-top:60px">
+<p>Exceptions are currently caught by periodically checking the <strong><code>var/report</code></strong> directory (<em>every 5 minutes</em>).</p>
+<p>To catch exceptions immediately this code snippet can be inserted into <strong><code>app/Mage.php</code></strong> around line <strong><code>693</code></strong>.</p>
+<p><em>Please note that this is a core hack, and if used care should be taken when upgrading Magento in the future.</em></p>
+<pre style="padding-left:10px;background:#111;color:#fff;font-size:11px"><code>
+    die();
+} catch (Exception $e) {
+    // BEGIN
+    self::dispatchEvent('fatal_exception_handler', array('exception' => $e));
+    // END
+
+    if (self::isInstalled() || self::$_isDownloader) {
+
+</code></pre>
+</div>
+                            ]]></label>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </springtimesoft_raygun_instructions>
                     </fields>
                 </springtimesoft_raygun_advanced_group>
             </groups>

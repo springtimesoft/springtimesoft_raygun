@@ -17,16 +17,33 @@
             </springtimesoft_raygun>
         </models>
         <events>
-            <controller_front_init_before>
+            <controller_action_predispatch>
                 <observers>
                     <springtimesoft_raygun>
                         <class>Springtimesoft_Raygun_Model_Observer</class>
                         <method>registerHandlers</method>
                     </springtimesoft_raygun>
                 </observers>
-            </controller_front_init_before>
+            </controller_action_predispatch>
+            <fatal_exception_handler>
+                <observers>
+                    <springtimesoft_raygun>
+                        <class>Springtimesoft_Raygun_Model_Observer</class>
+                        <method>fatalExceptionHandler</method>
+                    </springtimesoft_raygun>
+                </observers>
+            </fatal_exception_handler>
         </events>
     </global>
+    <crontab>
+        <jobs>
+            <!-- Cronjob to clean up error reports. -->
+            <springtimesoft_raygun>
+                <schedule><cron_expr>*/5 * * * *</cron_expr></schedule>
+                <run><model>springtimesoft_raygun/observer::logReports</model></run>
+            </springtimesoft_raygun>
+        </jobs>
+    </crontab>
     <default>
         <springtimesoft_raygun>
             <springtimesoft_raygun_group>

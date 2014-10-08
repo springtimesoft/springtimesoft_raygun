@@ -32,4 +32,16 @@ class Springtimesoft_Raygun_Model_Observer
     {
         Mage::helper('springtimesoft_raygun')->shutdownHandler();
     }
+
+    public static function fatalExceptionHandler($observer)
+    {
+        $event = $observer->getEvent();
+        $exception = $event->getException();
+        self::exceptionHandler($exception);
+    }
+
+    public static function logReports()
+    {
+        Mage::helper('springtimesoft_raygun')->logReports();
+    }
 }

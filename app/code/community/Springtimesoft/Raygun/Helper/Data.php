@@ -139,10 +139,42 @@ class Springtimesoft_Raygun_Helper_Data extends Mage_Core_Helper_Abstract
      */
     public function exceptionHandler($exception)
     {
-        if (!$this->getClient())
-            return;
-        
-        // Send the exception!
-        return $this->getClient()->SendException($exception, $this->getTags());
+        try {
+            if (!$this->getClient())
+                return;
+
+            // Send the exception!
+            return $this->getClient()->SendException($exception, $this->getTags());
+        } catch (Exception $e) {
+            // Welp, most likely the database is missing so we can't get the Raygun API key.
+            // Let Magento log this to file and we will get it later.
+        }
+    }
+
+    /**
+     * Read reports from var/reports directory and send them as Exceptions.
+     */
+    public function logReports()
+    {
+        try {
+            $reportsDirectory = Mage::getBaseDir('var') . '/report';
+
+            foreach (glob($reportsDirectory . '/*') as $report) {
+                $reportData = file_get_contents($report);
+                $reportData = unserialize($reportData);
+                $this->logReport($reportData);
+                unlink($report);
+            }
+        } catch (Exception $e) {
+            // Ignore
+        }
+    }
+
+    /**
+     * Take the unserialized reportData and pass it to the exception handler.
+     */
+    public function logReport($reportData)
+    {
+        $this->exceptionHandler(new ErrorException("{$reportData[0]}: {$reportData[1]}"));
     }
 }
