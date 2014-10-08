@@ -18,6 +18,30 @@ Detailed and friendly instructions coming soon.
 
 ##### Instructions for Composer:
 
+Add or update your `composer.json` in the root of your Magento install:
+
+```json
+{
+    "name": "yourcompany/your-magento-project",
+    "repositories": [
+            {
+                    "type": "vcs",
+                    "url": "https://github.com/springtimesoft/springtimesoft_raygun"
+            }
+    ],
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*",
+        "springtimesoft/springtimesoft_raygun": "*"
+    },
+    "extra":{
+        "magento-root-dir": "./",
+        "magento-force": true
+    }
+}
+```
+
+Then run `composer update` followed by `composer install`.
+
 See https://github.com/magento-hackathon/magento-composer-installer for more information.
 
 ##### Instructions for Modman:
