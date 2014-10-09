@@ -1,3 +1,5 @@
+# Raygun
+
 This is the official provider for the Raygun error reporting and tracking service built by [Springtimesoft](http://springtimesoft.co.nz), allowing you to automatically send errors and exceptions to Raygun from your Magento site.
 
 #### Features
